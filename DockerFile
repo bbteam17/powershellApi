@@ -1,0 +1,10 @@
+#FROM mcr.microsoft.com/powershell:latest
+
+RUN pwsh -c 'Install-Module Pode -force'
+RUN  pwsh -Command 'Install-Module PSWSMan -Confirm:$False -Force' #>/dev/null 2>&1
+RUN  pwsh -Command 'Install-WSMan -Distribution debian10  '
+RUN  pwsh -Command 'Install-Module MicrosoftTeams -Confirm:$False -Force' #>/dev/null 2>&1
+EXPOSE 8080
+
+#COPY . /usr/src/app/
+#CMD [ "pwsh", "-c", "cd /usr/src/app; ./StartPodeServer.ps1" ]
